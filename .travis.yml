@@ -1,0 +1,25 @@
+language: generic
+# Tell Travis we need docker
+services:
+    - docker
+
+# Tell Travis how to deploy code to AWS
+deploy:
+    provider: elasticbeanstalk # We will deploy code to Elastic Beanstalk
+    region: us-east-1 # Specify your region
+    app: "my-second-app" # Copy it from Elastic Beanstalk dashboard
+    env: "Mysecondapp-env" # Copy it from Elastic Beanstalk dashboard
+
+    # Access Key ID and Secret Access Key as Configured in IAM of AWS
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_keys: $AWS_SECRET_KEY
+
+    # Elastic Beanstalk will take code from S3 bucket and deploy it in a container
+    # Take it from AWS S3
+    bucket_name: "my-first-static-app-bucket"
+
+    # Folder where Travis CI will upload the code in zip file in this folder. Take it from AWS S3
+    bucket_path: "docker"
+    on:
+        #Deploy only when there are changes on main branch
+        branch: main
