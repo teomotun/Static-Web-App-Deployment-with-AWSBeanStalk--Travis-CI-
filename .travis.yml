@@ -12,7 +12,7 @@ deploy:
 
     # Access Key ID and Secret Access Key as Configured in IAM of AWS
     access_key_id: $AWS_ACCESS_KEY
-    secret_access_keys: $AWS_SECRET_KEY
+    secret_access_key: $AWS_SECRET_KEY
 
     # Elastic Beanstalk will take code from S3 bucket and deploy it in a container
     # Take it from AWS S3
